@@ -1,0 +1,25 @@
+#!/usr/bin/wsh ./libcrypto.so
+-- Computing a MD5 sum using cryptographic functions from libcrypto.so
+
+function str2md5(input)
+	out = calloc(33, 1)
+	ctx = calloc(1024, 1)
+	MD5_Init(ctx)
+	MD5_Update(ctx, input, strlen(input))
+	MD5_Final(out, ctx)
+	return out
+end
+
+expected = "\xd6\xfc\x46\x91\xb0\x6f\xab\x75\x4d\x9c\xa7\x58\x6d\x9c\x7e\x36"
+input = "Message needing hashing\n"
+hash = str2md5(input)
+
+res = memcmp(hash, expected, 16)
+
+if res == 0 then
+	print("PASS")
+else
+	print("FAILED")
+end
+
+exit(0)

@@ -1,0 +1,4 @@
+#!/usr/bin/wsh
+
+main()
+exit(0)
