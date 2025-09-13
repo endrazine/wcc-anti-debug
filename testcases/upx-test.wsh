@@ -1,4 +1,4 @@
-#!/usr/bin/wsh ./libcrypto.so
+#!/usr/bin/wsh ./libcrypto.so.3
 -- Computing a MD5 sum using cryptographic functions from libcrypto.so
 
 function str2md5(input)
